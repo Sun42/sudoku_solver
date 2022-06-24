@@ -7,7 +7,7 @@ function printGrid($grid)
     {
         foreach ($line as $square)
         {
-            echo "[$square]";
+            echo "$square";
         }
         echo "\n";
     }
