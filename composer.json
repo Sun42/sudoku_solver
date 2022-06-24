@@ -1,0 +1,24 @@
+{
+    "name": "chris/sudoku_solver",
+    "description": "A simple sudoku solver using backtracking",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Chris\\SudokuSolver\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sun42",
+            "email": "christophe1.sundas@epitech.eu"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "scripts": {
+        "start" : "php src/main.php",
+        "test": "phpunit tests/GridHelper.php"
+    }
+}
