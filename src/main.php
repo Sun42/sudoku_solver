@@ -1,6 +1,7 @@
 <?php
 
 require 'grid.php';
+require 'sudokuSolver.php';
 
 function printUsage($argv)
 {
@@ -33,6 +34,11 @@ $nb = intval($argv[1]);
 
 if (!validInitialGrid($grid, $nb * $nb))
 {
-    fwrite(STDERR, 'grille initiale non valide' . PHP_EOL);
+    fwrite(STDERR, 'Grille initiale non valide' . PHP_EOL);
     exit(1);
 }
+
+if (isValidSudoku($grid, 0))
+    printGrid($grid);
+else
+    fwrite(STDERR, 'Grille impossible à résoudre' . PHP_EOL);

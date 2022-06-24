@@ -19,6 +19,6 @@
     },
     "scripts": {
         "start" : "php src/main.php",
-        "test": "phpunit tests/GridHelper.php"
+        "test": "phpunit --debug --verbose tests/"
     }
 }
