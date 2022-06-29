@@ -4,12 +4,11 @@ require_once 'src/grid.php';
 
 function isValidSudoku(&$grid, $position)
 {
-    // echo "On test la position $position \n";
     $len = count($grid);
-    // nb squares + 1
+    // nb squares + 1, notre condition de sortie
     if ($position == $len*$len)
         return true;
-    // on récupère les coord
+    // on récupère les coordonées deu square courant
     $coord = positionToCoord($position, $grid);
     $i = $coord['i'];
     $j = $coord['j'];
@@ -20,14 +19,16 @@ function isValidSudoku(&$grid, $position)
     // énumération des valeurs possibles
     for ($k = 1; $k <= $len; $k++)
     {
-        // Si la valeur respecte les conditions
+        // Si la valeur respecte les conditions de placabilité
         $char = mb_chr($k +  mb_ord('0'));
         if (isPlaceable($char, $grid, $coord))
         {
             // echo "Position $position, char: $char est plaçable\n";
             $grid[$i][$j] = $char;
-            if (isValidSudoku($grid, $position + 1) )
-                return true;  // Si le choix est bon, plus la peine de continuer, on renvoie true :)
+            // si l'appel avec position+1 a renvoyé true, c'est que le reste de la grille est valide
+            if (isValidSudoku($grid, $position + 1))
+                return true;
+            // sinon on continue de chercher une autre valeur en laissant la boucle incrementer k 
         }
     }
     // pas de solution trouvée, on réinitialise la case
